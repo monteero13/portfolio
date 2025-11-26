@@ -26,12 +26,20 @@ export default function Home() {
       <div className="z-10 flex flex-col items-center px-4 text-center max-w-4xl mx-auto">
         
         {/* Top Tagline */}
-        <div className="mb-8 animate-fade-in flex items-center gap-2 px-3 py-1 text-xs font-medium text-zinc-400 bg-zinc-800/50 rounded-full border border-zinc-700/50 backdrop-blur-sm">
+        <div className="mb-4 animate-fade-in flex items-center gap-2 px-3 py-1 text-xs font-medium text-zinc-400 bg-zinc-800/50 rounded-full border border-zinc-700/50 backdrop-blur-sm">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
           </span>
-          Open to work & collaborations
+          Open to work & collaborations  
+        </div>
+
+        <div className="mb-8 animate-fade-in flex items-center mt-1 gap-2 px-3 py-1 text-xs font-medium text-zinc-400 bg-zinc-800/50 rounded-full border border-zinc-700/50 backdrop-blur-sm">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+          </span>
+          Currently working at<span  className="text-zinc-200 font-normal">Khaos Research.</span>
         </div>
 
         {/* Name with Gradient - Tamaño ajustado para móvil */}
@@ -50,7 +58,7 @@ export default function Home() {
             I bridge the gap between biology and technology. Passionate about 
             <span className="text-zinc-300"> Artificial Intelligence</span>, 
             <span className="text-zinc-300"> LLMs</span>, and building scalable web applications with 
-            <span className="text-zinc-300"> Python</span> and <span className="text-zinc-300">Next.js</span>.
+            <span className="text-zinc-300"> TypeScript</span> and <span className="text-zinc-300">Next.js</span>.
           </p>
         </div>
 
@@ -64,7 +72,7 @@ export default function Home() {
             download="Alberto_Montero_CV.pdf"
           >
             <FileDown className="w-4 h-4" />
-            Download Resume
+            Download CV
           </Link>
         </div>
 
