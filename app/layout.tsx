@@ -6,19 +6,18 @@ import { Analytics } from "./components/analytics";
 
 export const metadata: Metadata = {
   title: {
-    default: "chronark.com",
-    template: "%s | chronark.com",
+    default: "Alberto Montero",
+    template: "%s | Alberto Montero",
   },
-  description: "Co-founder of unkey.dev and founder of planetfall.io",
+  description: "Health Engineering Student & Bioinformatics Specialist specializing in AI, LLMs, and Web Development.",
   openGraph: {
-    title: "chronark.com",
-    description:
-      "Co-founder of unkey.dev and founder of planetfall.io",
-    url: "https://chronark.com",
-    siteName: "chronark.com",
+    title: "Alberto Montero",
+    description: "Health Engineering Student & Bioinformatics Specialist specializing in AI, LLMs, and Web Development.",
+    url: "https://albertomontero.vercel.app", // He puesto un placeholder común de Vercel, cámbialo si tienes dominio propio
+    siteName: "Alberto Montero",
     images: [
       {
-        url: "https://chronark.com/og.png",
+        url: "/fp.jpg", // Asegúrate de tener una imagen llamada og.png en tu carpeta public/
         width: 1920,
         height: 1080,
       },
@@ -38,11 +37,11 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Chronark",
+    title: "Alberto Montero",
     card: "summary_large_image",
   },
   icons: {
-    shortcut: "/favicon.png",
+    shortcut: "/fp.jpg",
   },
 };
 const inter = Inter({
