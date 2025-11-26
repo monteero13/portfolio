@@ -5,6 +5,7 @@ import { Card } from "../components/card";
 import { Eye } from "lucide-react";
 
 // Lista de proyectos con URLs a GitHub y descripciones actualizadas
+
 const allProjects = [
   {
     slug: "alcolens",
