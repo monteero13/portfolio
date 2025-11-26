@@ -10,7 +10,6 @@ const allProjects = [
   {
     slug: "alcolens",
     title: "Alcolens",
-    // Descripción actualizada a Inglés
     description: "SaaS platform for patient management and alcoholism auditing. Features secure authentication, user roles, and real-time data visualization.",
     date: "2024-05-15",
     published: true,
@@ -95,10 +94,17 @@ export default async function ProjectsPage() {
 
   // Helper para renderizar la tarjeta del proyecto con enlace externo
   const ProjectCardContent = ({ project, isFeatured = false }: { project: typeof allProjects[0], isFeatured?: boolean }) => (
-    <Link href={project.url} target="_blank" className="block w-full h-full">
+    // CAMBIO 1: Añadir target="_blank" para abrir en nueva pestaña
+    <Link 
+        href={project.url} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="block w-full h-full"
+    >
         <article className={`relative w-full h-full p-4 ${isFeatured ? 'md:p-8' : 'md:p-6'}`}>
         <div className="flex items-center justify-between gap-2">
-            <div className="text-xs text-zinc-100">
+            {/* CAMBIO 2: Fecha en blanco */}
+            <div className="text-xs text-white">
             {project.date ? (
                 <time dateTime={new Date(project.date).toISOString()}>
                 {Intl.DateTimeFormat("en-US", {
@@ -118,17 +124,22 @@ export default async function ProjectsPage() {
         </div>
 
         <h2
-            className={`mt-4 font-bold text-zinc-100 group-hover:text-white font-display ${
-                isFeatured ? 'text-3xl sm:text-4xl' : 'text-xl'
+            // CAMBIO 3: Título destacado con degradado Cyan/Sky
+            className={`mt-4 font-bold text-white group-hover:text-sky-300 font-display ${
+                isFeatured 
+                    ? 'text-3xl sm:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-white' 
+                    : 'text-xl'
             }`}
         >
             {project.title}
         </h2>
-        <p className="mt-4 leading-8 duration-150 text-zinc-400 group-hover:text-zinc-300">
+        {/* CAMBIO 4: Descripción con hover a blanco */}
+        <p className="mt-4 leading-8 duration-150 text-zinc-400 group-hover:text-white">
             {project.description}
         </p>
         <div className="mt-auto pt-5 bottom-4 md:bottom-8">
-            <p className="hidden text-zinc-200 hover:text-zinc-50 lg:block">
+            {/* CAMBIO 5: Link de 'Ver Proyecto' en color de acento */}
+            <p className="hidden text-sky-400 hover:text-white lg:block">
             View Project <span aria-hidden="true">&rarr;</span>
             </p>
         </div>
@@ -137,19 +148,23 @@ export default async function ProjectsPage() {
   );
 
   return (
-    <div className="relative pb-16">
+    // CAMBIO 6: Fondo a negro puro y padding superior ajustado
+    <div className="relative pb-16 bg-black"> 
       <Navigation />
       <div className="px-6 pt-20 mx-auto space-y-8 max-w-7xl lg:px-8 md:space-y-16 md:pt-24 lg:pt-32">
         <div className="max-w-2xl mx-auto lg:mx-0">
-          <h2 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-4xl font-display">
+          {/* CAMBIO 7: Título principal en blanco */}
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl font-display">
             Projects
           </h2>
-          <p className="mt-4 text-zinc-400">
+          {/* CAMBIO 8: Subtítulo con acento cyan */}
+          <p className="mt-4 text-cyan-400">
             A selection of my work in Bioinformatics, Health Engineering, and Web Development.
           </p>
         </div>
         
-        <div className="w-full h-px bg-zinc-800" />
+        {/* CAMBIO 9: Separador con color de acento */}
+        <div className="w-full h-px bg-sky-900/50" />
 
         <div className="grid grid-cols-1 gap-8 mx-auto lg:grid-cols-2 ">
           {/* Tarjeta Principal (Featured) */}
@@ -158,7 +173,7 @@ export default async function ProjectsPage() {
           </Card>
 
           {/* Top 2 y 3 */}
-          <div className="flex flex-col w-full gap-8 mx-auto border-t border-zinc-900/10 lg:mx-0 lg:border-t-0 ">
+          <div className="flex flex-col w-full gap-8 mx-auto border-t border-sky-900/50 lg:mx-0 lg:border-t-0 ">
             {[top2, top3].map((project) => (
               <Card key={project.slug}>
                 <ProjectCardContent project={project} />
@@ -167,7 +182,8 @@ export default async function ProjectsPage() {
           </div>
         </div>
         
-        <div className="hidden w-full h-px md:block bg-zinc-800" />
+        {/* CAMBIO 10: Separador con color de acento */}
+        <div className="hidden w-full h-px md:block bg-sky-900/50" />
 
         {/* Resto de proyectos (Grid de 3 columnas) */}
         <div className="grid grid-cols-1 gap-4 mx-auto lg:mx-0 md:grid-cols-3">

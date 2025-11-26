@@ -13,7 +13,7 @@ interface ParticlesProps {
 
 export default function Particles({
 	className = "",
-	quantity = 30,
+	quantity = 5,
 	staticity = 50,
 	ease = 50,
 	refresh = false,
@@ -94,29 +94,27 @@ export default function Particles({
 	};
 
 	const circleParams = (): Circle => {
-		const x = Math.floor(Math.random() * canvasSize.current.w);
-		const y = Math.floor(Math.random() * canvasSize.current.h);
-		const translateX = 0;
-		const translateY = 0;
-		const size = Math.floor(Math.random() * 2) + 0.1;
-		const alpha = 0;
-		const targetAlpha = parseFloat((Math.random() * 0.6 + 0.1).toFixed(1));
-		const dx = (Math.random() - 0.5) * 0.2;
-		const dy = (Math.random() - 0.5) * 0.2;
-		const magnetism = 0.1 + Math.random() * 4;
-		return {
-			x,
-			y,
-			translateX,
-			translateY,
-			size,
-			alpha,
-			targetAlpha,
-			dx,
-			dy,
-			magnetism,
-		};
-	};
+        const x = Math.floor(Math.random() * canvasSize.current.w);
+        const y = Math.floor(Math.random() * canvasSize.current.h);
+        const translateX = 0;
+        const translateY = 0;
+        // TAMAÑO: Máximo ~1.1px (MUY PEQUEÑO)
+        const size = Math.floor(Math.random() * 1) + 0.1; 
+        const alpha = 0;
+        // TARGET ALPHA: Opacidad objetivo inicial
+        const targetAlpha = parseFloat((Math.random() * 0.8 + 0.1).toFixed(1));
+        
+        // MOVIMIENTO BASE: CERO
+        const dx = 0; 
+        const dy = 0; 
+        
+        // MAGNETISMO: MUY BAJO (Ignora el ratón)
+        const magnetism = 0.1; 
+        
+        return {
+            x, y, translateX, translateY, size, alpha, targetAlpha, dx, dy, magnetism,
+        };
+    };
 
 	const drawCircle = (circle: Circle, update = false) => {
 		if (context.current) {
@@ -167,68 +165,68 @@ export default function Particles({
 	};
 
 	const animate = () => {
-		clearContext();
-		circles.current.forEach((circle: Circle, i: number) => {
-			// Handle the alpha value
-			const edge = [
-				circle.x + circle.translateX - circle.size, // distance from left edge
-				canvasSize.current.w - circle.x - circle.translateX - circle.size, // distance from right edge
-				circle.y + circle.translateY - circle.size, // distance from top edge
-				canvasSize.current.h - circle.y - circle.translateY - circle.size, // distance from bottom edge
-			];
-			const closestEdge = edge.reduce((a, b) => Math.min(a, b));
-			const remapClosestEdge = parseFloat(
-				remapValue(closestEdge, 0, 20, 0, 1).toFixed(2),
-			);
-			if (remapClosestEdge > 1) {
-				circle.alpha += 0.02;
-				if (circle.alpha > circle.targetAlpha) {
-					circle.alpha = circle.targetAlpha;
-				}
-			} else {
-				circle.alpha = circle.targetAlpha * remapClosestEdge;
-			}
-			circle.x += circle.dx;
-			circle.y += circle.dy;
-			circle.translateX +=
-				(mouse.current.x / (staticity / circle.magnetism) - circle.translateX) /
-				ease;
-			circle.translateY +=
-				(mouse.current.y / (staticity / circle.magnetism) - circle.translateY) /
-				ease;
-			// circle gets out of the canvas
-			if (
-				circle.x < -circle.size ||
-				circle.x > canvasSize.current.w + circle.size ||
-				circle.y < -circle.size ||
-				circle.y > canvasSize.current.h + circle.size
-			) {
-				// remove the circle from the array
-				circles.current.splice(i, 1);
-				// create a new circle
-				const newCircle = circleParams();
-				drawCircle(newCircle);
-				// update the circle position
-			} else {
-				drawCircle(
-					{
-						...circle,
-						x: circle.x,
-						y: circle.y,
-						translateX: circle.translateX,
-						translateY: circle.translateY,
-						alpha: circle.alpha,
-					},
-					true,
-				);
-			}
-		});
-		window.requestAnimationFrame(animate);
-	};
+        clearContext();
+        circles.current.forEach((circle: Circle, i: number) => {
 
-	return (
-		<div className={className} ref={canvasContainerRef} aria-hidden="true">
-			<canvas ref={canvasRef} />
-		</div>
-	);
+            // **********************************************
+            // LÓGICA SIMPLIFICADA PARA EL DESTELLEO CONSTANTE
+            // **********************************************
+            
+            // 1. Ocasionalmente, redefinir el targetAlpha (fuerza el destello)
+            if (Math.random() < 0.05) { 
+               // Nuevo targetAlpha entre 0.2 (tenue) y 0.8 (brillante)
+               circle.targetAlpha = parseFloat((Math.random() * 0.6 + 0.2).toFixed(1)); 
+            }
+
+            // 2. Mueve el alpha actual suavemente hacia el targetAlpha (el parpadeo)
+            if (circle.alpha < circle.targetAlpha) {
+                circle.alpha += 0.008; // Velocidad de iluminación más lenta
+            } else {
+                circle.alpha -= 0.008; // Velocidad de atenuación
+            }
+
+            // Asegurar que el alpha no se salga de los límites
+            circle.alpha = Math.min(1, Math.max(0, circle.alpha));
+            
+            // 3. MOVIMIENTO (DEBERÍA SER CERO POR DX/DY=0)
+            circle.x += circle.dx;
+            circle.y += circle.dy;
+            
+            // 4. IGNORAR COMPLETAMENTE EL RATÓN (Poner translateX/Y a 0)
+            circle.translateX = 0;
+            circle.translateY = 0;
+            
+            // 5. LÓGICA DE RECICLAJE (Mantenemos la reaparición si sale de pantalla)
+            if (
+                circle.x < -circle.size ||
+                circle.x > canvasSize.current.w + circle.size ||
+                circle.y < -circle.size ||
+                circle.y > canvasSize.current.h + circle.size
+            ) {
+                circles.current.splice(i, 1);
+                const newCircle = circleParams();
+                drawCircle(newCircle);
+            } else {
+                drawCircle(
+                    {
+                        ...circle,
+                        x: circle.x,
+                        y: circle.y,
+                        // Forzamos a que no haya traslación
+                        translateX: 0, 
+                        translateY: 0, 
+                        alpha: circle.alpha,
+                    },
+                    true,
+                );
+            }
+        });
+        window.requestAnimationFrame(animate);
+    };
+
+    return (
+        <div className={className} ref={canvasContainerRef} aria-hidden="true">
+            <canvas ref={canvasRef} />
+        </div>
+    );
 }
