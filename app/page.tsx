@@ -18,46 +18,46 @@ const navigation = [
 export default function Home() {
   return (
     // CAMBIO 1: Añadir MouseLight al contenedor principal
-    <div className="relative flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-black"> {/* Fondo Negro puro para contraste */}
+    <div className="relative flex flex-col items-center justify-center w-screen h-screen overflow-hidden bg-transparent"> {/* Fondo transparente para ver fireworks */}
       <Particles
         className="absolute inset-0 -z-10 animate-fade-in"
         quantity={80}
         staticity={100}
         ease={100}
       />
-      <MouseLight /> 
+      <MouseLight />
 
       {/* Background Effects */}
       {/* CAMBIO 2: Fondo de cuadrícula con color de acento más sutil */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-20"></div> 
-      
+      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-20"></div>
+
 
       {/* Main Content Container */}
       <div className="z-10 flex flex-col items-center px-4 text-center max-w-4xl mx-auto">
-        
+
         {/* Contenedor Flex para juntar las etiquetas */}
         <div className="flex flex-wrap justify-center gap-4 mb-8">
-            {/* Top Tagline 1: Open to work & collaborations */}
-            <div className="animate-fade-in flex items-center gap-2 px-3 py-1 text-xs font-medium text-sky-400 bg-sky-900/40 rounded-full border border-sky-700/50 backdrop-blur-sm"> {/* CAMBIO 3: Color Sky/Cyan */}
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
-              </span>
-              Open to work & collaborations  
-            </div>
+          {/* Top Tagline 1: Open to work & collaborations */}
+          <div className="animate-fade-in flex items-center gap-2 px-3 py-1 text-xs font-medium text-sky-400 bg-sky-900/40 rounded-full border border-sky-700/50 backdrop-blur-sm"> {/* CAMBIO 3: Color Sky/Cyan */}
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+            </span>
+            Open to work & collaborations
+          </div>
 
-            {/* Top Tagline 2: Currently working at */}
-            <div className="animate-fade-in flex items-center gap-2 px-3 py-1 text-xs font-medium text-sky-400 bg-sky-900/40 rounded-full border border-sky-700/50 backdrop-blur-sm"> {/* CAMBIO 3: Color Sky/Cyan */}
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-              </span>
-              Currently working at<span  className="text-white font-normal">
-                  <a href = "https://khaos.uma.es/" target="_blank" rel="noopener_noreferrer">
-                      <button className="ml-0 hover:underline ml-1">Khaos Research</button>
-                  </a>
-              </span>
-            </div>
+          {/* Top Tagline 2: Currently working at */}
+          <div className="animate-fade-in flex items-center gap-2 px-3 py-1 text-xs font-medium text-sky-400 bg-sky-900/40 rounded-full border border-sky-700/50 backdrop-blur-sm"> {/* CAMBIO 3: Color Sky/Cyan */}
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
+            </span>
+            Currently working at<span className="text-white font-normal">
+              <a href="https://khaos.uma.es/" target="_blank" rel="noopener_noreferrer">
+                <button className="ml-0 hover:underline ml-1">Khaos Research</button>
+              </a>
+            </span>
+          </div>
         </div>
 
         {/* Name with Gradient - CAMBIO 4: Degradado más brillante */}
@@ -73,9 +73,9 @@ export default function Home() {
         {/* Bio Description - CAMBIO 6: Texto principal en blanco, acentos en cyan */}
         <div className="my-4 max-w-2xl animate-fade-in space-y-4 delay-300 duration-1000">
           <p className="text-zinc-300 leading-relaxed text-sm sm:text-base">
-            I bridge the gap between biology and technology. Passionate about 
-            <span className="text-cyan-400 font-medium"> Artificial Intelligence</span> with <span className="text-cyan-400 font-medium">Python</span>, 
-            <span className="text-cyan-400 font-medium"> LLMs</span>, and building scalable web applications with 
+            I bridge the gap between biology and technology. Passionate about
+            <span className="text-cyan-400 font-medium"> Artificial Intelligence</span> with <span className="text-cyan-400 font-medium">Python</span>,
+            <span className="text-cyan-400 font-medium"> LLMs</span>, and building scalable web applications with
             <span className="text-cyan-400 font-medium"> TypeScript</span> and <span className="text-cyan-400 font-medium">Next.js</span>.
           </p>
         </div>
@@ -112,24 +112,24 @@ export default function Home() {
 
           {/* Social Icons - CAMBIO 7: Acentos de color en hover */}
           <div className="flex items-center justify-center gap-8 pt-8 border-t border-sky-900/50 w-full">
-            <Link 
-              href="https://github.com/monteero13" 
+            <Link
+              href="https://github.com/monteero13"
               target="_blank"
               className="text-zinc-500 hover:text-white transition-colors duration-300 hover:scale-110"
             >
               <Github className="w-6 h-6" />
               <span className="sr-only">GitHub</span>
             </Link>
-            <Link 
-              href="https://linkedin.com/in/albeertomonterosolera" 
+            <Link
+              href="https://linkedin.com/in/albeertomonterosolera"
               target="_blank"
               className="text-zinc-500 hover:text-sky-400 transition-colors duration-300 hover:scale-110"
             >
               <Linkedin className="w-6 h-6" />
               <span className="sr-only">LinkedIn</span>
             </Link>
-            <Link 
-              href="https://www.instagram.com/albeertomontero_/" 
+            <Link
+              href="https://www.instagram.com/albeertomontero_/"
               target="_blank"
               className="text-zinc-500 hover:text-cyan-400 transition-colors duration-300 hover:scale-110"
             >

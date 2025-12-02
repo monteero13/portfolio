@@ -3,6 +3,7 @@ import { Inter } from "@next/font/google";
 import LocalFont from "@next/font/local";
 import { Metadata } from "next";
 import { Analytics } from "./components/analytics";
+import { GravityStarsBackground } from "../components/animate-ui/components/backgrounds/gravity-stars"
 
 export const metadata: Metadata = {
   title: {
@@ -65,10 +66,13 @@ export default function RootLayout({
         <Analytics />
       </head>
       <body
-        className={`bg-black ${process.env.NODE_ENV === "development" ? "debug-screens" : undefined
+        className={`${process.env.NODE_ENV === "development" ? "debug-screens" : undefined
           }`}
       >
-        {children}
+        <div className="relative z-10">
+          {children}
+        </div>
+        <GravityStarsBackground className="fixed inset-0 -z-10 bg-black text-white" />
       </body>
     </html>
   );

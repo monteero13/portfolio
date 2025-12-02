@@ -11,7 +11,7 @@ const demos = [
     title: "Neo-Biotic",
     description: "Advanced analysis of antibiotic resistance patterns and microbiome interactions. A comprehensive R-based study visualized for clinical interpretation.",
     // If you enable GitHub Pages, the URL would be: https://monteero13.github.io/Neo-Biotic
-    url: "https://monteero13.github.io/Neo-Biotic", 
+    url: "https://monteero13.github.io/Neo-Biotic",
     repo: "https://github.com/monteero13/Neo-Biotic",
     tech: ["R", "Bioinformatics", "RMarkdown"],
   },
@@ -25,7 +25,7 @@ const demos = [
   {
     title: "Alcolens",
     description: "SaaS platform for patient management and alcoholism auditing. Features secure authentication, user roles, and real-time data visualization.",
-    url: "https://alcolens-demo.vercel.app", 
+    url: "https://alcolens-demo.vercel.app",
     repo: "https://github.com/monteero13/alcolens",
     tech: ["Next.js", "MongoDB", "NextAuth", "Tailwind"],
   },
@@ -34,7 +34,7 @@ const demos = [
 export default function Demos() {
   return (
     // CAMBIO 1: Fondo a negro puro
-    <div className="relative min-h-screen bg-black">
+    <div className="relative min-h-screen bg-transparent">
       <Navigation />
 
       <div className="container px-4 mx-auto pt-20 md:pt-32 pb-16">
@@ -45,7 +45,7 @@ export default function Demos() {
           </h1>
           {/* CAMBIO 3: Subtítulo con acento cyan */}
           <p className="mt-4 text-cyan-400">
-            Explore my deployed applications and technical reports. 
+            Explore my deployed applications and technical reports.
             From full-stack web apps to bioinformatics analysis and RStudio visualizations.
           </p>
         </div>
@@ -102,16 +102,16 @@ export default function Demos() {
                     </span>
                   ))}
                 </div>
-                
+
                 {/* Main Action Button */}
                 <Link
-                    href={demo.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    // CAMBIO 9: Botón principal con color de acento
-                    className="mt-6 w-full py-2 flex items-center justify-center gap-2 bg-sky-400 hover:bg-sky-300 text-black font-bold rounded-md transition-colors text-sm shadow-lg shadow-sky-500/30"
+                  href={demo.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  // CAMBIO 9: Botón principal con color de acento
+                  className="mt-6 w-full py-2 flex items-center justify-center gap-2 bg-sky-400 hover:bg-sky-300 text-black font-bold rounded-md transition-colors text-sm shadow-lg shadow-sky-500/30"
                 >
-                    View Demo <ExternalLink size={14} />
+                  View Demo <ExternalLink size={14} />
                 </Link>
               </div>
             </Card>

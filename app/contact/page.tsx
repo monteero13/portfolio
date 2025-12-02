@@ -67,9 +67,9 @@ export default function Contact() {
 
     return (
         // CAMBIO 1: Fondo a negro puro
-        <div className="bg-black min-h-screen">
+        <div className="bg-transparent min-h-screen">
             <Navigation />
-            
+
             <div className="container px-4 mx-auto pt-20 md:pt-32 pb-10">
                 {/* Header */}
                 <div className="max-w-2xl mx-auto mb-16 text-center">
@@ -96,7 +96,7 @@ export default function Contact() {
                                         </div>
                                         <h3 className="text-2xl font-bold text-white">Message Sent!</h3>
                                         <p className="mt-2 text-zinc-400">Thanks for reaching out. I&apos;ll get back to you as soon as possible.</p>
-                                        <button 
+                                        <button
                                             onClick={() => setIsSubmitted(false)}
                                             className="mt-8 text-sm text-zinc-500 hover:text-sky-300 underline"
                                         >
@@ -105,11 +105,11 @@ export default function Contact() {
                                     </div>
                                 ) : (
                                     <form onSubmit={handleSubmit} className="space-y-6">
-                                        
-                                        <input 
-                                            type="hidden" 
-                                            name="_subject" 
-                                            value="[PORTFOLIO] New contact from web" 
+
+                                        <input
+                                            type="hidden"
+                                            name="_subject"
+                                            value="[PORTFOLIO] New contact from web"
                                         />
 
                                         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
