@@ -257,8 +257,6 @@ function GravityStarsBackground({
   }, [
     canvasSize.width,
     canvasSize.height,
-    mouseInfluence,
-    mouseGravity,
     gravityStrength,
     glowAnimation,
     starsInteraction,
